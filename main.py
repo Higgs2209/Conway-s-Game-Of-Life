@@ -1,6 +1,7 @@
 import pygame
 import sys
 from grid import Grid
+from simulation import Simulation
 
 
 pygame.init()
@@ -18,9 +19,13 @@ pygame.display.set_caption("Game Of Life")
 
 clock = pygame.time.Clock()
 
+simulation = Simulation(WINDOW_WIDTH, WINDOW_HEIGHT, CELL_SIZE)
+
 grid = Grid(WINDOW_WIDTH, WINDOW_HEIGHT, CELL_SIZE)
-grid.cells[0][0] = 1
-grid.cells[2][1] = 1
+simulation.grid.cells[5][29] = 1
+
+
+
 
 # Simulation Loop
 
@@ -37,7 +42,7 @@ while True:
     # 3. Drawing the Grid
     window.fill(GREY)
 
-    grid.draw(window)
+    simulation.draw(window)
 
     pygame.display.update()
     clock.tick(FPS)
